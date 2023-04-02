@@ -18,7 +18,7 @@ leaderboardController.find = async () => {
     const data = await User
         .find()
         .limit(10)
-        .sort('-score')
+        .sort('score')
         .select('email score');
     
     return data;
