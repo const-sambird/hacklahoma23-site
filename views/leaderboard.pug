@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Leaderboard
+    .container
+        table.table 
+            thead 
+                tr
+                    th(scope='col') #
+                    th(scope='col') User
+                    th(scope='col') Score
+            tbody
+                each val, index in results
+                    tr
+                        td(scope='row')= index + 1
+                        td= val.email
+                        td= val.score

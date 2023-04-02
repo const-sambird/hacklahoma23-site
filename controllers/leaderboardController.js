@@ -14,4 +14,14 @@ leaderboardController.defeated = to => {
     .catch(e => console.error);
 };
 
+leaderboardController.find = async () => {
+    const data = await User
+        .find()
+        .limit(10)
+        .sort('score')
+        .select('email score');
+    
+    return data;
+}
+
 module.exports = exports = leaderboardController;

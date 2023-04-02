@@ -20,10 +20,13 @@ router.post('/onboard', requiresAuth(), async (req, res) => {
     res.redirect('/users/profile');
 });
 
-router.get('/leaderboard', requiresAuth(), async (req, res) => {
-    const user = await userController.get(req.oidc.user.email);
-    const phone = `+1${user.phone}`;
-    leaderboardController.defeated(phone);
+router.get('/leaderboard', requiresAuth(), (req, res) => {
+    const results = leaderboardController.find();
+    const data = []
+    for (let u of results) {
+        data.push({ email: u.email, score: u.score });
+    }
+    res.render('leaderboard', { results: data });
 });
 
 module.exports = router;
