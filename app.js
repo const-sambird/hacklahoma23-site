@@ -28,7 +28,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://nguyentendo.sambird.dev',
   clientID: 'hrJLeilVsxsh5krW7Uj2AzJ6NbNKm4ri',
   issuerBaseURL: 'https://dev-mfiu83fbmi1rtsdw.us.auth0.com'
 };
