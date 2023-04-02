@@ -31,6 +31,9 @@ leaderboardController.highScoreTest = async (score, email) => {
         .sort('score')
         .select('email score phone');
     
+    console.log(score, " ", email)
+    console.log(data)
+    
     if (email != data.email && score < data.score) {
         return data.phone;
     } else {
