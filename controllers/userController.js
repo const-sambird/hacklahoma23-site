@@ -25,7 +25,6 @@ userController.score = async (api_key, score) => {
     const user = await User.findOne({ api_key: api_key });
     if (score < user.score || user.score == 0) {
         const second = await leaderboardController.highScoreTest(score, user.email);
-        console.log(second)
         if (second) {
             leaderboardController.defeated(`+1${second}`);
         }
