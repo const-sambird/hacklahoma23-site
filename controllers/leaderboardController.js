@@ -24,4 +24,18 @@ leaderboardController.find = async () => {
     return data;
 }
 
+leaderboardController.highScoreTest = async (score, email) => {
+    const data = await User
+        .find()
+        .limit(1)
+        .sort('score')
+        .select('email score phone');
+    
+    if (email != data.email && score < data.score) {
+        return data.phone;
+    } else {
+        return false;
+    }
+}
+
 module.exports = exports = leaderboardController;

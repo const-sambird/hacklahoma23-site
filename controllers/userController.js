@@ -1,4 +1,5 @@
 const User = require('../database/User');
+const leaderboardController = require('../controllers/leaderboardController');
 const userController = {};
 
 userController.exists = (email) => {
@@ -25,6 +26,10 @@ userController.score = async (api_key, score) => {
     if (score < user.score || user.score == 0) {
         user.score = score;
         await user.save();
+        const second = leaderboardController.highScoreTest(score, user.email);
+        if (second) {
+            leaderboardController.defeated(`+1${second}`);
+        }
     }
 }
 
