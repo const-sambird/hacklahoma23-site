@@ -21,7 +21,7 @@ router.post('/key_reset', async (req, res) => {
     const user = await userController.get(req.oidc.user.email);
     user.createKey();
     await user.save();
-    res.redirect('/profile');
+    res.redirect('/users/profile');
 });
 
 
