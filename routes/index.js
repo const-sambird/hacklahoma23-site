@@ -20,8 +20,8 @@ router.post('/onboard', requiresAuth(), async (req, res) => {
     res.redirect('/users/profile');
 });
 
-router.get('/leaderboard', requiresAuth(), (req, res) => {
-    const results = leaderboardController.find();
+router.get('/leaderboard', requiresAuth(), async (req, res) => {
+    const results = await leaderboardController.find();
     const data = []
     for (let u of results) {
         data.push({ email: u.email, score: u.score });
