@@ -28,8 +28,8 @@ leaderboardController.highScoreTest = async (score, email) => {
     console.log('hst')
     const data = await User
         .find()
-        .limit(1)
         .sort('score')
+        .limit(1)        
         .select('email score phone');
     console.log(data)
     console.log(score, " ", email)
