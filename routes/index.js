@@ -15,7 +15,7 @@ router.get('/onboard', requiresAuth(), (req, res) => {
 router.post('/onboard', requiresAuth(), async (req, res) => {
     const number = req.body.number;
     const email = req.oidc.user.email;
-    const user = await userController.get(email);
+    const user = await userController.create(email);
     user.number = number;
     await user.save();
     res.redirect('/users/profile');
