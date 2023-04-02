@@ -16,4 +16,16 @@ userController.get = email => {
     return User.findOne({ email: email });
 }
 
+userController.api_match = api_key => {
+    return User.exists({ api_key: api_key });
+}
+
+userController.score = async (api_key, score) => {
+    const user = await User.findOne({ api_key: api_key });
+    if (score < user.score || user.score == 0) {
+        user.score = score;
+        await user.save();
+    }
+}
+
 module.exports = userController;
