@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { requiresAuth } = require('express-openid-connect');
 const userController = require('../controllers/userController');
+const leaderboardController = require('../controllers/leaderboardController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,6 +18,12 @@ router.post('/onboard', requiresAuth(), async (req, res) => {
     const email = req.oidc.user.email;
     await userController.create(email, number);
     res.redirect('/users/profile');
+});
+
+router.get('/leaderboard', requiresAuth(), async (req, res) => {
+    const user = await userController.get(req.oidc.user.email);
+    const phone = `+1${user.phone}`;
+    leaderboardController.defeated(phone);
 });
 
 module.exports = router;

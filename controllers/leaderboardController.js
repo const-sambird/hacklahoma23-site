@@ -12,4 +12,6 @@ leaderboardController.defeated = to => {
     })
     .then(message => console.log(message.sid))
     .catch(e => console.error);
-}
+};
+
+module.exports = exports = leaderboardController;
