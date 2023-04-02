@@ -2,7 +2,7 @@ const User = require('../database/User');
 const userController = {};
 
 userController.exists = (email) => {
-    return User.exists({ email: email }).exec();
+    return User.exists({ email: email });
 };
 
 userController.create = async (email, phone) => {
@@ -13,7 +13,7 @@ userController.create = async (email, phone) => {
 }
 
 userController.get = email => {
-    return User.findOne({ email: email }).exec();
+    return User.findOne({ email: email });
 }
 
 module.exports = userController;
