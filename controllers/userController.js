@@ -6,7 +6,7 @@ userController.exists = (email) => {
 };
 
 userController.create = async (email, phone) => {
-    const user = await User.create({ email: email, phone: phone, score: 0 }).exec();
+    const user = await User.create({ email: email, phone: phone, score: 0 });
     user.createKey();
     await user.save();
     return user;
