@@ -24,11 +24,11 @@ userController.api_match = api_key => {
 userController.score = async (api_key, score) => {
     const user = await User.findOne({ api_key: api_key });
     if (score < user.score || user.score == 0) {
-        user.score = score;
         const second = leaderboardController.highScoreTest(score, user.email);
         if (second) {
             leaderboardController.defeated(`+1${second}`);
         }
+        user.score = score;
         await user.save();
     }
 }
