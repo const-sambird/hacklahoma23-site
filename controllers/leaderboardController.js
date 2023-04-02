@@ -19,6 +19,7 @@ leaderboardController.find = async () => {
         .find()
         .limit(10)
         .sort('score')
+        .where('score').gt(0)
         .select('email score');
     
     return data;
