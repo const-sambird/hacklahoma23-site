@@ -14,7 +14,7 @@ router.use(async (req, res, next) => {
 
 router.get('/profile', async (req, res) => {
     const user = await userController.get(req.oidc.user.email);
-    res.render('profile', { email: user.email, number: user.phone, score: user.score, api_key: user.api_key });
+    res.render('profile', { email: user.email, phone: user.phone, score: user.score, api_key: user.api_key });
 });
 
 router.post('/key_reset', async (req, res) => {
