@@ -25,9 +25,12 @@ leaderboardController.find = async () => {
 }
 
 leaderboardController.highScoreTest = async (score, email) => {
-    const found = await User
-        .find({}, ['email', 'score', 'phone'], { skip: 0, limit: 1, sort: { score: 1 } });
-    const data = found[0]
+    const data = await User
+        .find()
+        .limit(1)
+        .sort('score')
+        .select('email score phone');
+    
     console.log(score, " ", email)
     console.log(data)
     
