@@ -6,7 +6,7 @@ const leaderboardController = require('../controllers/leaderboardController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index');
 });
 
 router.get('/onboard', requiresAuth(), (req, res) => {
