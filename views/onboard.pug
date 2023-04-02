@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    .container-md
+        h1 Complete your registration
+        p Please enter your phone number to complete your registration
+        p.small By entering your phone number, you give us permission to send you text messages.
+        form(method='post', action='/onboard')
+            .mb-3
+                label(for='number').form-label Phone number
+                input(type='tel', name='number', placeholder='(405) 555-1234')#number.form-control
+            input(type='submit', value='Submit Form').btn.btn-outline-success
